@@ -1,0 +1,2 @@
+# Bỏ qua file ảnh tar nặng để tải qua GitHub Releases
+*.tar

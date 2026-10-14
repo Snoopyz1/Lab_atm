@@ -1,0 +1,26 @@
+services:
+  victim:
+    image: nhom05-victim-crushftp:v1
+    container_name: victim_server
+    ports:
+      - "8080:8080"
+      - "21:21"
+    networks:
+      atm_net:
+        ipv4_address: 192.168.10.20
+
+  attacker:
+    image: nhom05-attacker-kali:v1
+    container_name: attacker_kali
+    depends_on:
+      - victim
+    networks:
+      atm_net:
+        ipv4_address: 192.168.10.10
+
+networks:
+  atm_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.10.0/24
